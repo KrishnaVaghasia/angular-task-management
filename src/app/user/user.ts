@@ -13,7 +13,7 @@ export class User {
   selectedUser = signal(DUMMY_USERS[randonIndex]);
   imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
 
-  //need to use computed if we are using signal
+  //need to use computed if we are using signal.
   // get imagePath() {
   //   return 'assets/users/' + this.selectedUser.avatar
   // }
