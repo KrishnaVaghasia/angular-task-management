@@ -11,17 +11,15 @@ const randonIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 export class User {
 
-  @Input() id!: string;
-  @Input() avatar!: string;
-  @Input() name!: string;
+  @Input() user!: {id: string, avatar: String, name: string};
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
-    return 'assets/users/' + this.avatar
+    return 'assets/users/' + this.user.avatar
   }
 
   onSelectUser(){
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 
 }
