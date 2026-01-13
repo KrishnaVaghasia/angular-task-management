@@ -1,19 +1,8 @@
 import { Component, computed, EventEmitter, input, Input, Output } from '@angular/core';
 import { DUMMY_USERS } from './dummy-users';
+import { type UserObj } from './user.model';
 
 const randonIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-
-// type UserObj = {
-//   id: string,
-//   avatar: String,
-//   name: string
-// }
-
-interface UserObj {
-  id: string, 
-  avatar: String,
-  name: string
-}
 
 @Component({
   selector: 'app-user',
@@ -22,16 +11,15 @@ interface UserObj {
   styleUrl: './user.css',
 })
 export class User {
-
   @Input() user!: UserObj;
+  @Input({ required: true }) selected!: boolean;
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
-    return 'assets/users/' + this.user.avatar
+    return 'assets/users/' + this.user.avatar;
   }
 
-  onSelectUser(){
+  onSelectUser() {
     this.select.emit(this.user.id);
   }
-
 }
