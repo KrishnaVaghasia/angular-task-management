@@ -1,16 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { Task } from './task/task';
 import { Title } from '@angular/platform-browser';
+import { NewTask } from "./new-task/new-task";
 
 @Component({
   selector: 'app-tasks',
-  imports: [Task],
+  imports: [Task, NewTask],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
 })
 export class Tasks {
   @Input() userId?: string;
   @Input() name?: string;
+
+  isAddingTask = false;
 
   tasks = [
     {
@@ -36,11 +39,19 @@ export class Tasks {
     },
   ];
 
-  get selectedUserTasks(){
+  get selectedUserTasks() {
     return this.tasks.filter((task) => task.userId === this.userId);
   }
 
-  onCompleteTask(id:string){
+  onCompleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+  onStartAddTask() {
+    this.isAddingTask = true;
+  }
+
+  onCancelAddTask(){
+    this.isAddingTask = false;
   }
 }
