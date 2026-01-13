@@ -3,6 +3,18 @@ import { DUMMY_USERS } from './dummy-users';
 
 const randonIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
+// type UserObj = {
+//   id: string,
+//   avatar: String,
+//   name: string
+// }
+
+interface UserObj {
+  id: string, 
+  avatar: String,
+  name: string
+}
+
 @Component({
   selector: 'app-user',
   imports: [],
@@ -11,7 +23,7 @@ const randonIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 export class User {
 
-  @Input() user!: {id: string, avatar: String, name: string};
+  @Input() user!: UserObj;
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
