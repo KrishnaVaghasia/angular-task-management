@@ -4,11 +4,10 @@ import { Header } from './header/header';
 import { User } from './user/user';
 import { DUMMY_USERS } from './user/dummy-users';
 import { Tasks } from './tasks/tasks';
-import { NgForOf, NgIf } from "../../node_modules/@angular/common/types/_common_module-chunk";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, User, Tasks, NgForOf, NgIf],
+  imports: [RouterOutlet, Header, User, Tasks],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
