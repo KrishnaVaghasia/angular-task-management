@@ -14,8 +14,7 @@ export class User {
   @Input() id!: string;
   @Input() avatar!: string;
   @Input() name!: string;
-  @Output() select = new EventEmitter();
-  //select = output<string>() -> internally creates EventEmitter (string as we are emitting id in onSelectUser())
+  @Output() select = new EventEmitter<string>();
 
   get imagePath() {
     return 'assets/users/' + this.avatar

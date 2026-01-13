@@ -3,19 +3,26 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from "./header/header";
 import { User } from "./user/user";
 import { DUMMY_USERS } from './user/dummy-users';
+import { Tasks } from "./tasks/tasks";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, User],
+  imports: [RouterOutlet, Header, User, Tasks],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
 
-  user = DUMMY_USERS;
+  users = DUMMY_USERS;
+
+  selectedUserID = "u1";
+
+  get selectedUser(){
+    return this.users.find((user) => user.id === this.selectedUserID)!;
+  }
 
   onSelectUser(id: string){
-    console.log("user Clicked" + id);
+   this.selectedUserID = id;
   }
   
 }
