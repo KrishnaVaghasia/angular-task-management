@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { type NewTaskData } from '../task/task.model';
 
 @Component({
   selector: 'app-new-task',
@@ -10,14 +11,22 @@ import { FormsModule } from '@angular/forms';
 export class NewTask {
 
   @Output() cancel = new EventEmitter<void>();
-
-  enteredTitle = signal(''); //signal will work as it is, no change needed in template file
+  @Output() add = new EventEmitter<NewTaskData>();
+  enteredTitle = '';
   enteredSummary = '';
   enteredDate = '';
 
 
   onCancel(){
     this.cancel.emit();
+  }
+
+  onSubmit(){
+    this.add.emit({
+      title: this.enteredTitle,
+      summary: this.enteredSummary,
+      date: this.enteredDate
+    })
   }
 
 }
