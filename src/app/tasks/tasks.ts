@@ -20,7 +20,7 @@ export class Tasks {
     {
       id: 't1',
       userId: 'u1',
-      title: 'masgter angular',
+      title: 'master angular',
       summary: 'learn angular',
       dueDate: '2025-02-05',
     },
