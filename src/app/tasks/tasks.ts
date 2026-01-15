@@ -36,5 +36,4 @@ export class Tasks {
     this.isAddingTask = false;
   }
 
-
 }
